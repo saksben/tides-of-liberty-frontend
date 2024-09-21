@@ -1,101 +1,229 @@
+import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
+import React from "react";
+
+interface CardProps {
+  imgSrc: string;
+  link: string;
+  alt: string;
+  height?: number;
+  width?: number;
+  title: string;
+  price: number;
+  className?: string;
+}
+
+const Card: React.FC<CardProps> = ({
+  imgSrc,
+  link,
+  alt,
+  height,
+  width,
+  title,
+  price,
+  className,
+}) => {
+  return (
+    <div className={cn("flex flex-col", className)}>
+      <Image src={imgSrc} alt={alt} height={height} width={width} />
+      <a href={link}>
+        <span className="font-bold text-md text-slate-700">{title}</span>
+      </a>
+      <span className="font-black text-slate-500 text-sm">${price}</span>
+    </div>
+  );
+};
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Banner */}
+      <div className="bg-yellow-400 font-bold h-10 flex justify-center items-center text-sm">
+        <span>FREE Shipping On All Products!</span>
+      </div>
+      {/* Nav */}
+      <nav className="border h-[150px] flex items-center justify-between">
+        <Image alt="logo" />
+        <ul className="flex gap-8">
+          <li>Men&apos;s</li>
+          <li>Women&apos;s</li>
+          <li>Hoodies</li>
+          <li>Hats</li>
+          <li>Mugs</li>
+        </ul>
+        <div className="flex">
+          <Image alt="Search" />
+          <Image alt="Account" />
+          <Image alt="Cart" />
+          <span>USD</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </nav>
+      {/* Hero */}
+      <section className="border h-[500px]"></section>
+      {/* Featured Products */}
+      <section className={cn("flex flex-col items-center")}>
+        <p className="uppercase font-bold">Featured Products</p>
+        <div className="flex gap-5">
+          <Card
+            imgSrc=""
+            link=""
+            alt=""
+            height={200}
+            width={200}
+            title="Warning Rant"
+            price={19.99}
+            className="border"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <Card
+            imgSrc=""
+            link=""
+            alt=""
+            height={200}
+            width={200}
+            title="Warning Rant"
+            price={19.99}
+            className="border"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <Card
+            imgSrc=""
+            link=""
+            alt=""
+            height={200}
+            width={200}
+            title="Warning Rant"
+            price={19.99}
+            className="border"
           />
-          Go to nextjs.org →
-        </a>
+          <Card
+            imgSrc=""
+            link=""
+            alt=""
+            height={200}
+            width={200}
+            title="Warning Rant"
+            price={19.99}
+            className="border"
+          />
+          <Card
+            imgSrc=""
+            link=""
+            alt=""
+            height={200}
+            width={200}
+            title="Warning Rant"
+            price={19.99}
+            className="border"
+          />
+        </div>
+      </section>
+      {/* Featured Collections */}
+      <section className="flex flex-col items-center">
+        <div className={cn("flex flex-col items-center")}>
+          <p className="uppercase font-bold">Featured Collection</p>
+          <div className="flex gap-5">
+            <Card
+              imgSrc=""
+              link=""
+              alt=""
+              height={200}
+              width={200}
+              title="Warning Rant"
+              price={19.99}
+              className="border"
+            />
+            <Card
+              imgSrc=""
+              link=""
+              alt=""
+              height={200}
+              width={200}
+              title="Warning Rant"
+              price={19.99}
+              className="border"
+            />
+            <Card
+              imgSrc=""
+              link=""
+              alt=""
+              height={200}
+              width={200}
+              title="Warning Rant"
+              price={19.99}
+              className="border"
+            />
+            <Card
+              imgSrc=""
+              link=""
+              alt=""
+              height={200}
+              width={200}
+              title="Warning Rant"
+              price={19.99}
+              className="border"
+            />
+            <Card
+              imgSrc=""
+              link=""
+              alt=""
+              height={200}
+              width={200}
+              title="Warning Rant"
+              price={19.99}
+              className="border"
+            />
+          </div>
+        </div>
+        <button className="uppercase py-3 px-4 bg-sky-800 text-white text-sm font-bold">
+          View All
+        </button>
+      </section>
+      {/* Newsletter */}
+      <section className="flex flex-col items-center">
+        <h2 className="uppercase text-center font-bold tracking-widest">
+          Enter your email address for 10% off new designs!
+        </h2>
+        <p className="text-center text-slate-500">
+          You&apos;ll be the first to know about news, new designs, new
+          philosophical blog posts, and a 10% discount for the first week a new
+          design is uploaded!
+        </p>
+        <div className="flex">
+          <input
+            className="border border-slate-500"
+            placeholder="Email address"
+          />
+          <button className="uppercase py-3 px-4 bg-sky-800 text-white text-sm font-bold">
+            Subscribe
+          </button>
+        </div>
+      </section>
+      {/* Footer */}
+      <footer className="text-white bg-zinc-950">
+        <div className="flex flex-col items-center">
+          <p className="font-bold">Quick links</p>
+          <ul className="flex gap-6 text-sm text-center text-neutral-700">
+            <li>Search</li>
+            <li>Privacy Policy</li>
+            <li>Refund Policy</li>
+            <li>Shipping Policy</li>
+            <li>Terms of Service</li>
+            <li>About Us</li>
+            <li>Contact Us</li>
+            <li>Affiliates</li>
+            <li>Sizing, Info, and Care</li>
+          </ul>
+        </div>
+        <div className="flex justify-between">
+          <div>
+            <div>
+              Social links
+            </div>
+            <span className="text-xs">&copy; 2024,</span>
+            <a href=""><span className="text-xs text-neutral-700"> Tides of Liberty</span></a>
+          </div>
+          <div>Cards</div>
+        </div>
       </footer>
-    </div>
+    </>
   );
 }
