@@ -17,7 +17,8 @@ import Venmo from "./svg/venmo.svg";
 import SearchIcon from "./svg/search.svg";
 import LoginIcon from "./svg/login.svg";
 import CartIcon from "./svg/cart.svg";
-import Visa from './svg/visa.svg'
+import Visa from "./svg/visa.svg";
+import Logo from "./images/logo.png";
 
 export {
   // Social Media icons
@@ -43,4 +44,6 @@ export {
   SearchIcon,
   LoginIcon,
   CartIcon,
+  // Images
+  Logo,
 };
