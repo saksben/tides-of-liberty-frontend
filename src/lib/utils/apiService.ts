@@ -42,7 +42,7 @@ export const deleteCollection = async (collectionSlug) => {
 }
 
 // Products methods
-export const fetchProductsByCollection = async (collectionSlug: string) => {
+export const fetchProductsByCollection = async (collectionSlug: string | string[]) => {
   return apiFetch(`/collections/${collectionSlug}/products`);
 };
 
@@ -68,8 +68,8 @@ export const deleteProduct = async (collectionSlug, productSlug) => {
 
 // Fetch product details including images
 export const fetchProductDetails = async (
-  collectionSlug: string,
-  productSlug: string
+  collectionSlug: string | string[],
+  productSlug: string | string[]
 ) => {
   return apiFetch(`/collections/${collectionSlug}/products/${productSlug}`);
 };
