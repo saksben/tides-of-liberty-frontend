@@ -21,6 +21,10 @@ export const fetchCollections = async () => {
   return apiFetch("/collections");
 };
 
+export const fetchSingleCollection = async (collectionSlug: string | string[]) => {
+  return apiFetch(`/collections/${collectionSlug}`)
+}
+
 export const createCollection = async (data) => {
     return apiFetch('/collections', {
         method: 'POST',

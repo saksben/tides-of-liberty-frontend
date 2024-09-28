@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const AdminLayout = ({ children }) => {
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <nav>
-        <Link href="/admin/collections">Manage Collections</Link>
-        <Link href="/admin/products">Manage Products</Link>
+    <div className='p-4 w-full'>
+      <h1 className='text-2xl text-center'>Admin Dashboard</h1>
+      <nav className='w-full flex gap-10'>
+        <Link href="/admin/collections" className='p-2 bg-blue-500 rounded text-white'>Manage Collections</Link>
+        {/* <Link href="/admin/products">Manage Products</Link> */}
       </nav>
       {children}
     </div>

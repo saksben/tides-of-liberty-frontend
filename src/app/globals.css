@@ -20,6 +20,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.markdown > ul {
+  list-style-type: disc;
+  margin-left: 1.25rem;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

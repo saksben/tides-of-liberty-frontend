@@ -72,41 +72,49 @@ const CollectionsPage = () => {
   };
 
   return (
-    <div>
-      <h2>Manage Collections</h2>
-      {error && <p>{error}</p>}
-      <input
-        type="text"
-        value={newCollectionName}
-        onChange={(e) => setNewCollectionName(e.target.value)}
-        placeholder="New collection name"
-      />
-      <button onClick={handleAddCollection}>Add Collection</button>
+    <div className='flex flex-col gap-2'>
+      <h2 className='text-xl text-center'>Manage Collections</h2>
+      {error && <p className="text-red-500">{error}</p>}
+      <div className='flex gap-3'>
+        <input
+          type="text"
+          value={newCollectionName}
+          onChange={(e) => setNewCollectionName(e.target.value)}
+          placeholder="New collection name"
+          className="border"
+        />
+        <button onClick={handleAddCollection} className='rounded bg-green-700 p-2 text-white'>Add Collection</button>
+      </div>
       <ul>
         {collections.map((collection) => (
           <li key={collection.slug}>
             {editCollectionSlug === collection.slug ? (
-              <>
+              <div className='flex gap-3'>
                 <input
                   type="text"
                   value={editCollectionName}
                   onChange={(e) => setEditCollectionName(e.target.value)}
+                  className='border'
                 />
-                <button onClick={handleUpdateCollection}>Update</button>
-                <button onClick={() => setEditCollectionSlug("")}>
-                  Cancel
-                </button>
-              </>
+                <div className='flex gap-2'>
+                  <button onClick={handleUpdateCollection} className='rounded bg-slate-500 p-2 text-white'>Update</button>
+                  <button onClick={() => setEditCollectionSlug("")} className='rounded bg-red-500 text-white p-2'>
+                    Cancel
+                  </button>
+                </div>
+              </div>
             ) : (
-              <>
+              <div className='flex gap-3 items-center'>
                 {collection.name}
-                <button onClick={() => handleEditCollection(collection)}>
-                  Edit
-                </button>
-                <button onClick={() => handleDeleteCollection(collection.slug)}>
-                  Delete
-                </button>
-              </>
+                <div className='flex gap-2'>
+                  <button onClick={() => handleEditCollection(collection)} className='rounded bg-slate-500 p-2 text-white'>
+                    Edit
+                  </button>
+                  <button onClick={() => handleDeleteCollection(collection.slug)} className='rounded bg-red-500 text-white p-2'>
+                    Delete
+                  </button>
+                </div>
+              </div>
             )}
           </li>
         ))}

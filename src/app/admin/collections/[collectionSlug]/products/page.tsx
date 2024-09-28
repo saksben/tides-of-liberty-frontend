@@ -75,37 +75,45 @@ const ProductsPage = () => {
   };
 
   return (
-    <div>
-      <h2>Manage Products</h2>
-      {error && <p>{error}</p>}
-      <input
-        type="text"
-        value={newProductName}
-        onChange={(e) => setNewProductName(e.target.value)}
-        placeholder="New product name"
-      />
-      <button onClick={handleAddProduct}>Add Product</button>
-      <ul>
+    <div className='flex flex-col gap-2'>
+      <h2 className='text-xl text-center'>Manage Products</h2>
+      {error && <p className="text-red-500">{error}</p>}
+      <div className='flex gap-3'>
+        <input
+          type="text"
+          value={newProductName}
+          onChange={(e) => setNewProductName(e.target.value)}
+          placeholder="New product name"
+          className='border'
+        />
+        <button onClick={handleAddProduct} className='bg-green-700 text-white p-2 rounded'>Add Product</button>
+      </div>
+      <ul className='flex flex-col gap-2'>
         {products.map((product) => (
           <li key={product.slug}>
             {editProductSlug === product.slug ? (
-              <>
+              <div className='flex gap-3'>
                 <input
                   type="text"
                   value={editProductName}
                   onChange={(e) => setEditProductName(e.target.value)}
+                  className='border'
                 />
-                <button onClick={handleUpdateProduct}>Update</button>
-                <button onClick={() => setEditProductSlug("")}>Cancel</button>
-              </>
+                <div className='flex gap-2'>
+                  <button onClick={handleUpdateProduct} className='bg-slate-500 text-white rounded p-2'>Update</button>
+                  <button onClick={() => setEditProductSlug("")} className='bg-red-500 text-white rounded p-2'>Cancel</button>
+                </div>
+              </div>
             ) : (
-              <>
+              <div className='flex gap-3 items-center'>
                 {product.name}{" "}
-                <button onClick={() => handleEditProduct(product)}>Edit</button>
-                <button onClick={() => handleDeleteProduct(product.slug)}>
-                  Delete
-                </button>
-              </>
+                <div className='flex gap-2'>
+                  <button onClick={() => handleEditProduct(product)} className='bg-slate-500 rounded p-2 text-white'>Edit</button>
+                  <button onClick={() => handleDeleteProduct(product.slug)} className='bg-red-500 rounded p-2 text-white'>
+                    Delete
+                  </button>
+                </div>
+              </div>
             )}
           </li>
         ))}
