@@ -44,6 +44,33 @@ export const metadata: Metadata = {
   description: "Libertarian-themed apparel company",
 };
 
+const Dropdown = ({ dropdownName, children }) => {
+  return (
+    <>
+      <li className="relative group cursor-default">
+        <span>{dropdownName}</span>
+        <ul className="absolute -left-2 mt-2 w-48 bg-white rounded-sm shadow-lg group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 transform translate-y-5 group-hover:visible z-10 invisible">
+          {children}
+        </ul>
+      </li>
+    </>
+  );
+};
+
+const DropdownItem = ({ collectionLink, collectionName }) => {
+  return (
+    <>
+      <li>
+        <Link href={collectionLink}>
+          <span className="block px-4 py-2 hover:bg-slate-100 hover:text-yellow-500">
+            {collectionName}
+          </span>
+        </Link>
+      </li>
+    </>
+  );
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,20 +82,97 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Banner */}
-        <div className="bg-yellow-400 font-bold h-10 flex justify-center items-center text-sm">
+        <Link href='/collections' className="bg-yellow-400 font-bold h-10 flex justify-center items-center text-sm hover:bg-yellow-500">
           <span>FREE Shipping On All Products!</span>
-        </div>
+        </Link>
         {/* Nav */}
         <nav className="border-b h-[130px] flex items-center justify-between px-[4rem]">
           <Link href="/">
             <Image src={Logo} height={100} alt="logo" />
           </Link>
           <ul className="flex gap-8 text-sm tracking-wider text-slate-700">
-            <li>Men&#39;s</li>
-            <li>Women&#39;s</li>
-            <li>Hoodies</li>
-            <li>Hats</li>
-            <li>Mugs</li>
+            <Dropdown dropdownName="Men&#39;s">
+              <DropdownItem
+                collectionLink="/collections/t-shirts"
+                collectionName="Regular T-Shirts"
+              />
+              <DropdownItem
+                collectionLink="/collections/economy-tees"
+                collectionName="Economy Tees"
+              />
+              <DropdownItem
+                collectionLink="/collections/mens-triblend-shirts"
+                collectionName="Tri-blend Shirts"
+              />
+              <DropdownItem
+                collectionLink="/collections/long-sleeve-shirts"
+                collectionName="Long Sleeve Shirts"
+              />
+              <DropdownItem
+                collectionLink="/collections/mens-tank-tops"
+                collectionName="Tank Tops"
+              />
+            </Dropdown>
+            <Dropdown dropdownName="Women&#39;s">
+              <DropdownItem
+                collectionLink="/collections/womens-t-shirts"
+                collectionName="Regular T-Shirts"
+              />
+              <DropdownItem
+                collectionLink="/collections/economy-tees"
+                collectionName="Economy Tees"
+              />
+              <DropdownItem
+                collectionLink="/collections/womens-triblend-t-shirt"
+                collectionName="Tri-blend shirts"
+              />
+              <DropdownItem
+                collectionLink="/collections/long-sleeve-shirts"
+                collectionName="Long Sleeve Shirts"
+              />
+              <DropdownItem
+                collectionLink="/collections/womens-tank-tops"
+                collectionName="Tank Tops"
+              />
+            </Dropdown>
+            <Dropdown dropdownName="Hoodies">
+              <DropdownItem
+                collectionLink="/collections/heavy-hoodies"
+                collectionName="Heavy Hoodies"
+              />
+              <DropdownItem
+                collectionLink="/collections/light-hoodies"
+                collectionName="Supersoft Light Hoodies"
+              />
+              <DropdownItem
+                collectionLink="/collections/sweatshirts"
+                collectionName="Sweatshirts"
+              />
+            </Dropdown>
+            <Dropdown dropdownName="Hats">
+              <DropdownItem
+                collectionLink="/collections/dad-caps"
+                collectionName="Dad Caps"
+              />
+              <DropdownItem
+                collectionLink="/collections/snapback-caps"
+                collectionName="Snapback Caps"
+              />
+              <DropdownItem
+                collectionLink="/collections/beanies"
+                collectionName="Beanies"
+              />
+            </Dropdown>
+            <Dropdown dropdownName="Mugs">
+              <DropdownItem
+                collectionLink="/collections/mugs"
+                collectionName="11oz"
+              />
+              <DropdownItem
+                collectionLink="/collections/150z-mugs"
+                collectionName="15oz"
+              />
+            </Dropdown>
           </ul>
           <div className="flex gap-6">
             <Link href="/search">
@@ -80,7 +184,7 @@ export default function RootLayout({
             <Link href="/cart">
               <Image src={CartIcon} height={25} alt="Cart" />
             </Link>
-            <select className="text-sm">
+            <select className="text-sm cursor-pointer">
               <option value="usd">USD</option>
               <option value="aud">AUD</option>
               <option value="cad">CAD</option>

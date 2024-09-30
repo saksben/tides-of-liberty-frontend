@@ -41,8 +41,8 @@ export default function Home() {
       {/* Hero */}
       <section className="border h-[480px]"></section>
       {/* Featured Products */}
-      <section className={cn("flex flex-col items-center")}>
-        <p className="uppercase font-bold text-slate-700 tracking-widest text-lg">
+      <section className={cn("flex flex-col items-center mt-[6rem]")}>
+        <p className="uppercase font-bold text-slate-700 tracking-widest text-lg mb-[3rem]">
           Featured Products
         </p>
         <div className="flex gap-5">
@@ -99,9 +99,9 @@ export default function Home() {
         </div>
       </section>
       {/* Featured Collections */}
-      <section className="flex flex-col items-center">
+      <section className="flex flex-col items-center mt-[8rem]">
         <div className={cn("flex flex-col items-center")}>
-          <p className="uppercase font-bold text-slate-700 text-lg tracking-widest">
+          <p className="uppercase font-bold text-slate-700 text-lg tracking-widest mb-[3rem]">
             Featured Collection
           </p>
           <div className="flex gap-5">
@@ -157,7 +157,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <Link href="">
+        <Link href="" className='my-[6rem]'>
           <button className="uppercase py-3 px-4 bg-slate-500 rounded-sm tracking-wider text-white text-sm font-bold">
             View All
           </button>
